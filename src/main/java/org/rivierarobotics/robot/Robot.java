@@ -28,11 +28,14 @@ import org.rivierarobotics.subsystems.DriveTrain;
 
 public class Robot extends TimedRobot {
     private final DriveTrain driveTrain;
-    private final Joystick joystick;
+    private final Joystick joystick1;
+    private final Joystick joystick2;
+    private final double deadband = 0.1;
 
     public Robot(){
         this.driveTrain = new DriveTrain();
-        this.joystick = new Joystick(0);
+        this.joystick1 = new Joystick(0);
+        this.joystick2 = new Joystick(1);
     }
 
     @Override
@@ -43,5 +46,8 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic(){
         CommandScheduler.getInstance().run();
+        double y1 = joystick1.getY();
+        double y2 = joystick2.getY();
+        driveTrain.setPower(y1, y2);
     }
 }
