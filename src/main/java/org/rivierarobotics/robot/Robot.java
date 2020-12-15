@@ -20,8 +20,28 @@
 
 package org.rivierarobotics.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import org.rivierarobotics.commands.DriveControl;
+import org.rivierarobotics.subsystems.DriveTrain;
 
 public class Robot extends TimedRobot {
+    private final DriveTrain driveTrain;
+    private final Joystick joystick;
 
+    public Robot(){
+        this.driveTrain = new DriveTrain();
+        this.joystick = new Joystick(0);
+    }
+
+    @Override
+    public void robotInit(){
+        new DriveControl(driveTrain, new Joystick(0), new Joystick(1)).schedule();
+    }
+
+    @Override
+    public void teleopPeriodic(){
+        CommandScheduler.getInstance().run();
+    }
 }
