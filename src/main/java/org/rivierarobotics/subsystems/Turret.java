@@ -19,7 +19,7 @@ public class Turret extends SubsystemBase {
     }
     public void setPositionDegrees(double pos){
         double ticks = (ticksInADegree*(360 + offset)) % 4096;
-        setPositionTicks(pos * ticks);
+        turret.set(ControlMode.MotionMagic, ticks);
     }
     public double getPositionTicks(){
         return turret.getSelectedSensorPosition();
