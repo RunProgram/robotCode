@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Turret extends SubsystemBase {
     private final WPI_TalonSRX turret;
     private double ticksInADegree = 4096/360;
+    private double offset = 100/ticksInADegree;
     public Turret(WPI_TalonSRX turret){
         this.turret = turret;
     }
@@ -17,7 +18,8 @@ public class Turret extends SubsystemBase {
         turret.set(ControlMode.MotionMagic, ticks);
     }
     public void setPositionDegrees(double pos){
-        setPositionTicks(pos * ticksInADegree);
+        double ticks = (ticksInADegree*(360 + offset)) % 4096;
+        setPositionTicks(pos * ticks);
     }
     public double getPositionTicks(){
         return turret.getSelectedSensorPosition();
