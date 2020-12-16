@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Turret extends SubsystemBase {
     private final WPI_TalonSRX turret;
-    private double ticksInADegree = 4096/360;
+    private double ticksInADegree = 4096.0/360.0;
     private double offset = 100/ticksInADegree;
     public Turret(WPI_TalonSRX turret){
         this.turret = turret;
