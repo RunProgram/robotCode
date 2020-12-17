@@ -39,7 +39,7 @@ public class Turret extends SubsystemBase {
         if(getPositionDegrees() >= -45){
             turret.set(pow);
         }
-        if(!(getPositionDegrees() <= 45 && getPositionDegrees() >= -45)){
+        if(!(getPositionDegrees() <= 45 && getPositionDegrees() >= -45) || getPositionDegrees() == 0){
             turret.set(0);
         }
     }
