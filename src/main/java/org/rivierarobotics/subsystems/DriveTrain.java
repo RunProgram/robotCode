@@ -15,7 +15,7 @@ public class DriveTrain extends SubsystemBase {
         left.setPower(deadBandSet(l));
         right.setPower(deadBandSet(r));
     }
-    private double deadBandSet(double num){
+    public double deadBandSet(double num){
         if(Math.abs(num) < deadband){
             return 0;
         }

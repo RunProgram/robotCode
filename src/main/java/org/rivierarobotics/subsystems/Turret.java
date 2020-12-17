@@ -32,4 +32,15 @@ public class Turret extends SubsystemBase {
         double degrees = getPositionTicks()/ticksInADegree;
         return degrees;
     }
+    public void setPower(double pow){
+        if(getPositionDegrees() <= 45){
+            turret.set(-pow);
+        }
+        if(getPositionDegrees() >= -45){
+            turret.set(pow);
+        }
+        if(!(getPositionDegrees() <= 45 && getPositionDegrees() >= -45)){
+            turret.set(0);
+        }
+    }
 }
