@@ -29,7 +29,7 @@ public class Turret extends SubsystemBase {
         return turret.getSelectedSensorPosition();
     }
     public double getPositionDegrees(){
-        double degrees = turret.getSelectedSensorPosition()/ticksInADegree;
+        double degrees = getPositionTicks()/ticksInADegree;
         return degrees;
     }
 }
