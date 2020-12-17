@@ -22,7 +22,7 @@ public class Turret extends SubsystemBase {
     public void setPositionDegrees(double pos){
         if(pos >= -45 || pos <= 45){
             double ticks = (ticksInADegree*(pos + offset)) % 4096;
-            turret.set(ControlMode.MotionMagic, ticks);
+            setPositionTicks(ticks);
         }
     }
     public double getPositionTicks(){
